@@ -27,6 +27,11 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
+app.get('/api', (req, res) => {
+  const currentDate = new Date().toUTCString();
+  const currentUnix = Date.parse(currentDate);
+  res.json({ unix: currentUnix, utc: currentDate });
+});
  
  // route on GET with a parameter we call :date
  app.get('/api/:date?', (req, res) => {
@@ -48,13 +53,9 @@ app.get("/api/hello", function (req, res) {
      console.log({ unix: unixTimestamp, utc: utcDate });
      res.json({ unix: unixTimestamp, utc: utcDate });
    }
- 
-   app.get('/api', (req, res) => {
-     const currentDate = new Date().toUTCString();
-     const currentUnix = Date.parse(currentDate);
-     res.json({ unix: currentUnix, utc: currentDate });
-   });
  });
+
+
  
  var listener = app.listen(3000, function () {
    console.log('Your app is listening on port ' + listener.address().port);
