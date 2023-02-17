@@ -8,7 +8,7 @@
  router.use(express.static(path.resolve(__dirname, 'client')));
  
 
- router.get('/:date', function(req, res){
+ router.get('/api/:date', function(req, res){
    var date = new Date();
    if(/^\d*$/.test(req.params.date)){
      date.setTime(req.params.date);
